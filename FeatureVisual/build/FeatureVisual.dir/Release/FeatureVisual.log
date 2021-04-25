@@ -1,3 +1,0 @@
-﻿  FeatureVisual.cxx
-C:\Users\jiaoy\Desktop\ETH-IN\Visualization\project\FeatureVisual\FeatureVisual.cxx(53,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  FeatureVisual.vcxproj -> C:\Users\jiaoy\Desktop\ETH-IN\Visualization\project\FeatureVisual\build\Release\FeatureVisual.exe
