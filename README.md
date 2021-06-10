@@ -7,7 +7,7 @@ This repo contains the source code to support temproal visualization taking cosm
 - Cosmic web
 - GUI
 
-Please build the code properly with cmake and vtk installed.
+Please build the code properly with cmake and vtk, eigen3 installed.
 
 
 ## Particle attributes
