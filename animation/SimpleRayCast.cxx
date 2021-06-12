@@ -38,7 +38,7 @@ void getData(std::string root_path, int fileId, std::string feature) {
     std::string strid = std::to_string(fileId);
     std::string filepath = root_path + "/sph_result_" + strid + "_" + feature + ".txt";
     std::ifstream input(filepath);
-    std::cout<<filepath<<std::endl;
+    //std::cout<<filepath<<std::endl;
     int gridsize;
     input >> gridsize;
     double corner1x, corner1y, corner1z;
@@ -292,24 +292,27 @@ public:
 };
 
 int main() {
-    std::string root_path;
+    std::string root_path,feature;
     std::cout << "Please input the path to the sph txt result folder: ";
     std::cin >> root_path;
+    std::cout << "Please input the attribute name (density/interEn/gravPo/curlnorm/temperature/entropy/divergence): ";
+    std::cin >> feature;
 
-    initialize(root_path,312,"density");
+    initialize(root_path,0,feature);
     Camera* camera = new Camera();
 
     for (int i = 0; i <= 312; i ++) {
-        getData(root_path,i,"density");
+        getData(root_path,i,feature);
         volumeMapper->SetInputData(imageData);
         renWin->Render();
         camera->takePicture(renWin, i);
     }
 
-    auto frame = imread("C:/particle_attributes/build/out_0.png");
-    auto writer = VideoWriter("out.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 10, frame.size());
-    for (int i = 0; i <= 624; i += 2) {
-        std::string name = "C:/particle_attributes/build/out_" + std::to_string(i) + ".png";
+    auto frame = imread("../../build/out_0.png");
+
+    auto writer = VideoWriter(feature+".avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 10, frame.size());
+    for (int i = 0; i <= 312; i ++) {
+        std::string name = "../../build/out_" + std::to_string(i) + ".png";
         frame = imread(name);
         writer << frame;
     }
