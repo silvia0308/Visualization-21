@@ -46,7 +46,7 @@ Run ```cosmic_web/show.cxx```, follow the instructions to input cosmic web resul
 
 - Integrate all visualization in a GUI<br/>
 Run ```gui/main.cxx```, follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.<br/>
-The gui works as the same as in the ```gui/demo.mp4```.
+The gui works as the same as in the ```gui/demo.mov```.
 
 ## Animation
 
