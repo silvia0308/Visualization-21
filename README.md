@@ -23,8 +23,13 @@ The generated files are saved in the build folder.
 Run ```particle_type/visual_type/show.cxx```, follow the instructions to input cosmology path and time.<br/>
 - Visual the number of particle type transition in a chord diagram <br/>
 Get into Colaboratory via the link https://colab.research.google.com/. Open ```particle_type/charts/chordDiagram.ipynb```.<br/>
+You will get the following image:<br/>
+<div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/chordDiagram.png" width="450" height="400"/></div>
+
 - Visual the number of particle types over time in a histogram <br/>
 Run ```particle_type/charts/dataDistribu.cpp```, follow the instructions to input cosmology path and get ```distribute.txt```. Then run ```particle_type/charts/plotDist.cpp```.<br/>
+You will get the following image:<br/>
+<div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/histogram.png" width="450" height="400"/></div>
 
 ## Particle attributes
 
@@ -40,3 +45,4 @@ Run ```cosmic_web/show.cxx```, follow the instructions to input cosmic web resul
 ## GUI
 
 Run ```gui/main.cxx```, follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.
+The gui works as the same as in the demo:
