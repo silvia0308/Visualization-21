@@ -8,11 +8,16 @@
 
 class CosWeb {
 private:
+    std::string root_path;
     vtkSmartPointer<vtkPolyData> data;
     vtkNew<vtkPointGaussianMapper> mapper;
     vtkNew<vtkRenderer> renderer;
 
 public:
+    CosWeb(std::string txt_results) {
+        root_path = txt_results;
+    };
+
     template <class TReader> vtkDataSet* ReadAnXMLFile(const char* fileName)
     {
         vtkNew<TReader> reader;
@@ -24,7 +29,7 @@ public:
 
     void getData(int fileId) {
         std::string strid = std::to_string(fileId);
-        std::string filename = "C:/Visualization-21/data/cosmicweb_result_" + strid + ".txt";
+        std::string filename = root_path+"/cosmicweb_result_" + strid + ".txt";
         std::ifstream input(filename);
 
         vtkNew<vtkPoints> points;

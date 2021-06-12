@@ -26,7 +26,7 @@ class MainWindow : public QMainWindow
 {
   Q_OBJECT
 public:
-  explicit MainWindow(QWidget* parent = nullptr);
+  explicit MainWindow(std::string root_path1, std::string root_path2, QWidget* parent = nullptr);
   virtual ~MainWindow();
   void setRenderWindow(vtkSmartPointer<vtkRenderer> ren);
   void setFileId(int num);

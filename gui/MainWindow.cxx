@@ -8,8 +8,8 @@
 #endif
 
 // Constructor
-MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow), pt(new ParticleType()),pa(new ParticleAttributes()),cw(new CosWeb())
+MainWindow::MainWindow(std::string root_path1, std::string root_path2, QWidget* parent)
+    : QMainWindow(parent), ui(new Ui::MainWindow), pt(new ParticleType(root_path1)),pa(new ParticleAttributes(root_path2)),cw(new CosWeb(root_path2))
 {
     this->ui->setupUi(this);
 

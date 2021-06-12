@@ -19,11 +19,16 @@
 
 class ParticleType {
 private:
+    std::string root_path;
     vtkSmartPointer<vtkPolyData> stardata, basedata;
     vtkNew<vtkPointGaussianMapper> mapper, mapper2;
     vtkSmartPointer<vtkRenderer> renderer;
 
 public:
+    ParticleType(std::string cosmology) {
+        root_path = cosmology;
+    };
+
     template <class TReader> vtkDataSet* ReadAnXMLFile(const char* fileName)
     {
         vtkNew<TReader> reader;
@@ -34,9 +39,8 @@ public:
     };
 
     void getStarData(int fileId) {
-
         std::string strid = std::to_string(fileId);
-        std::string name = "C:/Cosmology/Full.cosmo." + std::string(3 - strid.length(), '0') + strid + ".vtp";
+        std::string name = root_path+"/Full.cosmo." + std::string(3 - strid.length(), '0') + strid + ".vtp";
 
         vtkSmartPointer<vtkDataSet> dataSet;
         dataSet = ReadAnXMLFile<vtkXMLPolyDataReader>(name.c_str());

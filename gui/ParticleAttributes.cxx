@@ -17,6 +17,7 @@
 
 class ParticleAttributes {
 private:
+    std::string root_path;
     vtkSmartPointer<vtkRenderer> ren1;
     vtkSmartPointer<vtkImageData> imageData;
     vtkNew<vtkVolume> volume;
@@ -25,10 +26,14 @@ private:
     vtkNew<vtkPiecewiseFunction> opacityTransferFunction;
     vtkNew<vtkColorTransferFunction>colorTransferFunction;
 
-    std::string feature="density";
-    int fileId=0;
+    std::string feature = "interEn";
+    int fileId = 0;
 
 public:
+    ParticleAttributes(std::string txt_results) {
+        root_path = txt_results;
+    };
+
     bool boundPoint(int gridsize, int x, int y, int z) {
         if (y == 0 && z == 0 || x == 0 && z == 0 || x == 0 && y == 0 || x == gridsize - 1 && z == 0 || y == gridsize - 1 && z == 0 || x == gridsize - 1 && y == 0 || z == gridsize - 1 && y == 0 || z == gridsize - 1 && x == 0 || y == gridsize - 1 && x == 0 || z == gridsize - 1 && x == gridsize - 1 || z == gridsize - 1 && y == gridsize - 1 || x == gridsize - 1 && y == gridsize - 1) {
             return true;
@@ -68,7 +73,7 @@ public:
 
     void setImageData() {
         std::string strid = std::to_string(fileId);
-        std::string name = "C:/Visualization-21/data/sph_result_" + strid + "_" + feature + ".txt";
+        std::string name = root_path+"/sph_result_" + strid + "_" + feature + ".txt";
         std::ifstream input(name);
         int gridsize;
         input >> gridsize;
@@ -77,19 +82,13 @@ public:
         double corner2x, corner2y, corner2z;
         input >> corner2x >> corner2y >> corner2z;
         std::vector<double> value;
-        std::vector<float> scaled;
         double t;
         double maxt = 0;
         for (int i = 0; i < gridsize * gridsize * gridsize; i++) {
             input >> t;
-            int z = i % gridsize;
-            int y = (i / gridsize) % gridsize;
-            int x = (i / (gridsize * gridsize)) % gridsize;
             value.push_back(t);
             maxt = std::max(maxt, t);
         }
-        std::cout << "Grid Size: " << gridsize << std::endl;
-        std::cout << maxt << std::endl;
         // This is a simple volume rendering example that
         // uses a vtkFixedPointVolumeRayCastMapper
         imageData = vtkSmartPointer<vtkImageData>::New();
@@ -109,7 +108,15 @@ public:
                 for (int x = 0; x < dims[0]; x++)
                 {
                     int idx = x * gridsize * gridsize + y * gridsize + z;
-                    if (boundPoint(gridsize, x, y, z)) {
+
+                    //set value for the boundary box 
+                    if (boundPoint(gridsize, x, y, z) && feature == "divergence") {
+                        *ptr++ = 1000000;
+                    }
+                    else if (boundPoint(gridsize, x, y, z) && feature == "gravPo") {
+                        *ptr++ = 10000;
+                    }
+                    else if (boundPoint(gridsize, x, y, z)) {
                         *ptr++ = -100;
                     }
                     else {
@@ -118,9 +125,6 @@ public:
                         }
                         if (feature == "interEn") {
                             *ptr++ = (int)sqrt(10 * value[idx]) / 10;
-                        }
-                        if (feature == "gravPo") {
-                            *ptr++ = value[idx] + 674.561;
                         }
                         if (feature == "curlnorm") {
                             *ptr++ = (int)value[idx] / 10;
@@ -131,8 +135,8 @@ public:
                         if (feature == "entropy") {
                             *ptr++ = (int)value[idx];
                         }
-                        if (feature == "divergence") {
-                            *ptr++ = (int)value[idx] + 35200;
+                        if (feature == "gravPo" || feature == "divergence") {
+                            *ptr++ = value[idx];
                         }
                     }
                 }
@@ -159,18 +163,13 @@ public:
             opacityTransferFunction->AddPoint(100, 0.8);
             opacityTransferFunction->AddPoint(900, 1);
         }
-        /*
-          if (feature == "gravPo") {
-              opacityTransferFunction->AddPoint(-100, 1);
-              opacityTransferFunction->AddPoint(0, 0.2);
-              //opacityTransferFunction->AddPoint(100, 1);
-              //opacityTransferFunction->AddPoint(200, 0.05);
-              opacityTransferFunction->AddPoint(500, 0.8);
-              //opacityTransferFunction->AddPoint(600, 1);
-              //opacityTransferFunction->AddPoint(600, 1);
-              opacityTransferFunction->AddPoint(770, 1);
-          }
-          */
+        if (feature == "gravPo") {
+            opacityTransferFunction->AddPoint(-50, 0.1);
+            opacityTransferFunction->AddPoint(0, 0);
+            opacityTransferFunction->AddPoint(50, 0.1);
+            opacityTransferFunction->AddPoint(2000, 0.1);
+            opacityTransferFunction->AddPoint(3000, 1);
+        }
         if (feature == "curlnorm") {
             opacityTransferFunction->AddPoint(-100, 1);
             opacityTransferFunction->AddPoint(0, 0.0);
@@ -198,8 +197,19 @@ public:
             opacityTransferFunction->AddPoint(5, 0.3);
             opacityTransferFunction->AddPoint(7, 0.8);
             opacityTransferFunction->AddPoint(10, 1);
-            //opacityTransferFunction->AddPoint(300, 0.8);
-            //opacityTransferFunction->AddPoint(600, 1);
+        }
+        if (feature == "divergence") {
+            opacityTransferFunction->AddPoint(-2000, 1);
+            opacityTransferFunction->AddPoint(-500, 0.5);
+            opacityTransferFunction->AddPoint(-300, 0.05);
+            opacityTransferFunction->AddPoint(-50, 0);
+            opacityTransferFunction->AddPoint(0, 0);
+            opacityTransferFunction->AddPoint(50, 0);
+            opacityTransferFunction->AddPoint(300, 0.05);
+            opacityTransferFunction->AddPoint(500, 0.2);
+            opacityTransferFunction->AddPoint(2000, 0.8);
+            opacityTransferFunction->AddPoint(8000, 0);
+            opacityTransferFunction->AddPoint(10000, 1);
         }
 
         if (feature == "density") {
@@ -218,18 +228,14 @@ public:
             colorTransferFunction->AddRGBPoint(100, 0.6, 0.2705, 0.02);
             colorTransferFunction->AddRGBPoint(900, 0.6, 0.2705, 0.02);
         }
-        /*
-          if (feature == "gravPo") {
-              colorTransferFunction->AddRGBPoint(-100.0, 1, 1, 1);
-              colorTransferFunction->AddRGBPoint(0.0, 0, 1, 0);
-              colorTransferFunction->AddRGBPoint(770, 1, 1, 1);
-              //colorTransferFunction->AddRGBPoint(100, 0, 1, 0);
-              //colorTransferFunction->AddRGBPoint(200, 1, 1, 1);
-              //colorTransferFunction->AddRGBPoint(500, 1, 1, 1);
-              //colorTransferFunction->AddRGBPoint(600, 0.6392, 0.0588, 0.3882);
-              //colorTransferFunction->AddRGBPoint(770, 0.6392, 0.0588, 0.3882);
-          }
-        */
+        if (feature == "gravPo") {
+            colorTransferFunction->AddRGBPoint(-100.0, 0, 1, 0);
+            colorTransferFunction->AddRGBPoint(0.0, 1, 1, 1);
+            colorTransferFunction->AddRGBPoint(30, 1, 0, 0);
+            colorTransferFunction->AddRGBPoint(80, 1, 0, 0);
+            colorTransferFunction->AddRGBPoint(2000, 1, 0, 0);
+            colorTransferFunction->AddRGBPoint(3000, 1, 1, 1);
+        }
         if (feature == "curlnorm") {
             colorTransferFunction->AddRGBPoint(-100.0, 1, 1, 1);
             colorTransferFunction->AddRGBPoint(0.0, 1, 1, 1);
@@ -255,7 +261,16 @@ public:
             colorTransferFunction->AddRGBPoint(5, 0, 1, 0.2235);
             colorTransferFunction->AddRGBPoint(7, 0.102, 0.5412, 0.2039);
             colorTransferFunction->AddRGBPoint(10, 0.102, 0.5412, 0.2039);
-            //colorTransferFunction->AddRGBPoint(600, 1, 1, 0);
+        }
+        if (feature == "divergence") {
+            colorTransferFunction->AddRGBPoint(-2000.0, 0, 0, 1);
+            colorTransferFunction->AddRGBPoint(-500.0, 0.1, 0.3, 1);
+            colorTransferFunction->AddRGBPoint(-300.0, 0.2, 0.5, 0.8);
+            colorTransferFunction->AddRGBPoint(0.0, 1, 1, 1);
+            colorTransferFunction->AddRGBPoint(500, 0.8, 0.3, 0);
+            colorTransferFunction->AddRGBPoint(2000, 1, 0, 0);
+            colorTransferFunction->AddRGBPoint(8000, 1, 0, 0);
+            colorTransferFunction->AddRGBPoint(10000, 1, 1, 1);
         }
 
         volume->Update();
@@ -269,7 +284,6 @@ public:
     void setAll(int fileId, std::string feature) {
         this->fileId = fileId;
         this->feature = feature;
-        std::string strid = std::to_string(fileId);
         setImageData();
         volumeMapper->SetInputData(imageData);
         removePoints();
