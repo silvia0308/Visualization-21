@@ -1,4 +1,1 @@
-*.zip
-build
-FeatureVisual/build
-
+build/

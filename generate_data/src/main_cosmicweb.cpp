@@ -28,13 +28,15 @@ void writePointsToFile(const std::string& filename, const std::vector<Eigen::Vec
 }
 
 void run() {
-    std::string root_path = "/media/shaoliu/data/Cosmology/";
+    std::string root_path;
+    std::cout << "Please input the path to cosmology folder: ";
+    std::cin >> root_path;
     int total_file = 313;
     Eigen::MatrixXd grid_points; // We share a same grid across different data frames
-    int start_num = 200;
+    //int start_num = 0;
     for (int f = 0; f < total_file; ++f) {
-        if (f < start_num && f != 0)
-            continue;
+        /*if (f < start_num && f != 0)
+            continue;*/
         int padding = 3 - std::to_string(f * 2).length();
         std::string file_name;
         if (padding == 2) {
@@ -46,7 +48,7 @@ void run() {
         else {
             file_name = std::to_string(f * 2);
         }
-        std::string file_path = root_path + "Full.cosmo." + file_name + ".vtp"; 
+        std::string file_path = root_path + "/Full.cosmo." + file_name + ".vtp";
 
         // load dataset
         std::shared_ptr<vis21::DataFrame> pd = std::shared_ptr<vis21::DataFrame>(new vis21::DataFrame(file_path, f * 2));
@@ -55,14 +57,14 @@ void run() {
         vis21::SPHOptions sph_options;
         sph_options.do_print = true;
         sph_options.resolution = 101;
-        sph_options.w_radius_ratio = 8.0;
+        sph_options.w_radius_ratio = 3.0;
         vis21::SPHInterpolator sph_engine(pd, sph_options);
         if (f == 0)
             grid_points = sph_engine.getGridPoints();
         else
             sph_engine.setGridPoints(grid_points);
-        if (f < start_num)
-            continue;
+        /*if (f < start_num)
+            continue;*/
 
         std::vector<Eigen::Vector3d> points;
         sph_engine.ComputeCosmicweb(points, vis21::ParticleType::RHO);
