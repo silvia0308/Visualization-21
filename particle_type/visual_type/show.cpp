@@ -36,13 +36,13 @@ int main(int argc, char** argv)
 	std::cin >> time;
 
 	std::string strid = std::to_string(std::stoi(time)*2);
-	std::cout<<strid<<std::endl;
+	//std::cout<<strid<<std::endl;
 	std::string name = root_path+"/Full.cosmo." + std::string(3-strid.length(),'0') + strid + ".vtp";
 
 	vtkSmartPointer<vtkDataSet> dataSet;	
 	dataSet = ReadAnXMLFile<vtkXMLPolyDataReader>(name.c_str());
     int numberOfPoints = dataSet->GetNumberOfPoints();
-    std::cout <<  numberOfPoints << " points." << std::endl;
+    //std::cout <<  numberOfPoints << " points." << std::endl;
 
     vtkPointData* pd = dataSet->GetPointData();
     std::vector<int> star,form,wind,AGN,total,remain;
