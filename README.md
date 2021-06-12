@@ -7,6 +7,7 @@ This repo contains the source code to support temproal visualization taking cosm
 - Particle attributes
 - Cosmic web
 - GUI
+- Animation
 
 Please build the code properly with cmake and vtk, eigen3 and qt installed.
 
@@ -38,11 +39,18 @@ Run ```particle_attributes/SimpleRayCast.cxx```, follow the instructions to inpu
 
 ## Cosmic web
 
-
 - Visualize cosmic web with point gaussian <br/>
 Run ```cosmic_web/show.cxx```, follow the instructions to input cosmic web result path and time. 
 
 ## GUI
 
+- Integrate all visualization in a GUI.
 Run ```gui/main.cxx```, follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.<br/>
 The gui works as the same as in the demo:
+
+## Animation
+
+- Show how particles change over time.<br/>
+```particle_type.avi``` shows the change of particle types.<br/>
+```density.avi``` shows the change of particle density.<br/>
+If you want to visual the change of different particle attributes, run ```animation/SimpleRayCast.cxx```, follow the instructions to input sph result path and attribute.
