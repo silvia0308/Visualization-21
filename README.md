@@ -44,5 +44,5 @@ Run ```cosmic_web/show.cxx```, follow the instructions to input cosmic web resul
 
 ## GUI
 
-Run ```gui/main.cxx```, follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.
+Run ```gui/main.cxx```, follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.<br/>
 The gui works as the same as in the demo:
