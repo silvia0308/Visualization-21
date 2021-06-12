@@ -65,7 +65,7 @@ int main(int argc, char** argv)
   std::ofstream file;
   file.open("../distribute.txt",std::ofstream::app);
   file<<"Num-Star-FormingStar-WindStar-AGN\n";
-  for(int j=614;j<=624;j+=2){
+  for(int j=0;j<=624;j+=2){
     run(j);
   }
   for(int i=0;i<vstar.size();i++){
