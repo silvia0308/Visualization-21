@@ -46,11 +46,11 @@ Run ```cosmic_web/show.cxx```, follow the instructions to input cosmic web resul
 
 - Integrate all visualization in a GUI<br/>
 Run ```gui/main.cxx```, follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.<br/>
-The gui works as the same as in the demo:
+The gui works as the same as in the ```gui/demo.mp4```.
 
 ## Animation
 
 - Show how particles change over time<br/>
-```particle_type.avi``` shows the change of particle types.<br/>
-```density.avi``` shows the change of particle density.<br/>
+```animation/particle_type.avi``` shows the change of particle types.<br/>
+```animation/density.avi``` shows the change of particle density.<br/>
 If you want to visual the change of different particle attributes, run ```animation/SimpleRayCast.cxx```, follow the instructions to input sph result path and attribute.
