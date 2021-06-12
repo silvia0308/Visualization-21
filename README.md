@@ -13,7 +13,7 @@ Please build the code properly with cmake and vtk, eigen3 and qt installed.
 
 ## Generate Data
 
-- Before visualization, you need to generate txt files of SPH and cosmic web.<br/>
+- Generate txt files of SPH and cosmic web<br/>
 Run ```generate_data/src/main_sph.cpp```, follow the instructions to input cosmology path.<br/>
 Run ```generate_data/src/main_cosmicweb.cpp```, follow the instructions to input cosmology path.<br/>
 The generated files are saved in the build folder.
@@ -44,13 +44,13 @@ Run ```cosmic_web/show.cxx```, follow the instructions to input cosmic web resul
 
 ## GUI
 
-- Integrate all visualization in a GUI.
+- Integrate all visualization in a GUI<br/>
 Run ```gui/main.cxx```, follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.<br/>
 The gui works as the same as in the demo:
 
 ## Animation
 
-- Show how particles change over time.<br/>
+- Show how particles change over time<br/>
 ```particle_type.avi``` shows the change of particle types.<br/>
 ```density.avi``` shows the change of particle density.<br/>
 If you want to visual the change of different particle attributes, run ```animation/SimpleRayCast.cxx```, follow the instructions to input sph result path and attribute.
