@@ -12,6 +12,7 @@ struct CosmicwebOptions {
     double eps_duplicate = 1e-6;
     double eps_null = 1e-6;
     double eps_refine = 1e-8;
+    double eps_density = 1e10;
 };
 
 typedef Eigen::Vector3d Vec3d;
@@ -32,6 +33,7 @@ private:
 
     Eigen::MatrixXd grid_points_;
     int resolution;
+    Eigen::VectorXd vals_;
     std::vector<Eigen::Vector3d> grads_;
     std::vector<Eigen::Vector3d> hesxgrads_;
 
@@ -51,8 +53,8 @@ private:
 public:
     CosmicwebEngine() {};
     ~CosmicwebEngine() {};
-    CosmicwebEngine(const CosmicwebOptions& options, const Eigen::MatrixXd& grid_points, const std::vector<Eigen::Vector3d>& grads, const std::vector<Eigen::Vector3d>& hesxgrads)
-        : options_(options), grid_points_(grid_points), grads_(grads), hesxgrads_(hesxgrads) {
+    CosmicwebEngine(const CosmicwebOptions& options, const Eigen::MatrixXd& grid_points, const Eigen::VectorXd& vals, const std::vector<Eigen::Vector3d>& grads, const std::vector<Eigen::Vector3d>& hesxgrads)
+        : options_(options), grid_points_(grid_points), vals_(vals), grads_(grads), hesxgrads_(hesxgrads) {
             resolution = std::round(pow(grid_points_.rows(), 1.0 / 3.0));
         };
 

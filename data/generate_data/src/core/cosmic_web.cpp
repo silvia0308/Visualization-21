@@ -140,6 +140,9 @@ void CosmicwebEngine::CollectQuadTuples(std::vector<Vec3dQuadTuple>& quadtuples)
                 Vec3dQuad quadx(grid_points_.row(id_00), grid_points_.row(id_10), grid_points_.row(id_01), grid_points_.row(id_11));
                 if (!inside_range(quadx))
                     continue;
+                if (vals_(id_00) < options_.eps_density && vals_(id_10) < options_.eps_density 
+                        && vals_(id_01) < options_.eps_density && vals_(id_11) < options_.eps_density)
+                    continue;
                 Vec3dQuad quadu(grads_[id_00], grads_[id_10], grads_[id_01], grads_[id_11]);
                 Vec3dQuad quadv(hesxgrads_[id_00], hesxgrads_[id_10], hesxgrads_[id_01], hesxgrads_[id_11]);
                 Vec3dQuadTuple quadtuple(quadx, quadu, quadv);
@@ -158,6 +161,9 @@ void CosmicwebEngine::CollectQuadTuples(std::vector<Vec3dQuadTuple>& quadtuples)
                 Vec3dQuad quadx(grid_points_.row(id_00), grid_points_.row(id_10), grid_points_.row(id_01), grid_points_.row(id_11));
                 if (!inside_range(quadx))
                     continue;
+                if (vals_(id_00) < options_.eps_density && vals_(id_10) < options_.eps_density 
+                        && vals_(id_01) < options_.eps_density && vals_(id_11) < options_.eps_density)
+                    continue;
                 Vec3dQuad quadu(grads_[id_00], grads_[id_10], grads_[id_01], grads_[id_11]);
                 Vec3dQuad quadv(hesxgrads_[id_00], hesxgrads_[id_10], hesxgrads_[id_01], hesxgrads_[id_11]);
                 Vec3dQuadTuple quadtuple(quadx, quadu, quadv);
@@ -175,6 +181,9 @@ void CosmicwebEngine::CollectQuadTuples(std::vector<Vec3dQuadTuple>& quadtuples)
                 int id_11 = get_gridid(x+1, y+1, z);
                 Vec3dQuad quadx(grid_points_.row(id_00), grid_points_.row(id_10), grid_points_.row(id_01), grid_points_.row(id_11));
                 if (!inside_range(quadx))
+                    continue;
+                if (vals_(id_00) < options_.eps_density && vals_(id_10) < options_.eps_density 
+                        && vals_(id_01) < options_.eps_density && vals_(id_11) < options_.eps_density)
                     continue;
                 Vec3dQuad quadu(grads_[id_00], grads_[id_10], grads_[id_01], grads_[id_11]);
                 Vec3dQuad quadv(hesxgrads_[id_00], hesxgrads_[id_10], hesxgrads_[id_01], hesxgrads_[id_11]);

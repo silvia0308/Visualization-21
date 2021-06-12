@@ -528,8 +528,8 @@ void SPHInterpolator::ComputeCosmicweb(std::vector<Eigen::Vector3d>& points, con
     computeDensityArray();
 
     // compute gradient, hessian and hessian times gradient
+    interpolate_val(type);
     if (options_.use_finite_difference) {
-        interpolate_val(type);
         interpolate_grad(val_array_);
         interpolate_hessian(grad_array_);
     }
@@ -548,7 +548,8 @@ void SPHInterpolator::ComputeCosmicweb(std::vector<Eigen::Vector3d>& points, con
     cw_options.eps_null = 1e-6;
     cw_options.eps_duplicate = 1e-6;
     cw_options.eps_refine = 1e-8;
-    CosmicwebEngine cw_engine(cw_options, grid_points_, grad_array_, hesxgrad_array_);
+    cw_options.eps_density = 5e10;
+    CosmicwebEngine cw_engine(cw_options, grid_points_, val_array_, grad_array_, hesxgrad_array_);
     cw_engine.Run(points);
     if (options_.do_print)
         std::cout<<"Cosmic web completed (n_points = "<<points.size()<<")"<<std::endl;
