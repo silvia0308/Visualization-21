@@ -8,6 +8,9 @@
 #include <vtkPolyData.h>
 #include <vtkPointGaussianMapper.h>
 #include <vtkNew.h>
+#include <vtkRenderer.h>
+#include <vtkImageData.h>
+#include <vtkFixedPointVolumeRayCastMapper.h>
 
 #include "ParticleType.cxx"
 #include "ParticleAttributes.cxx"
@@ -30,6 +33,8 @@ public:
   virtual ~MainWindow();
   void setRenderWindow(vtkSmartPointer<vtkRenderer> ren);
   void setFileId(int num);
+  void visualize(std::string feature,vtkSmartPointer<vtkImageData> imageData);
+  vtkSmartPointer<vtkImageData> getData(int fileId, std::string feature);
 
 private slots:
 	void on_typeChecked();
@@ -46,7 +51,7 @@ private:
   ParticleAttributes* pa;
   CosWeb* cw;
   vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow;
-
+  vtkSmartPointer<vtkFixedPointVolumeRayCastMapper> volumeMapper;
 };
 
 #endif
