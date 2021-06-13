@@ -32,7 +32,7 @@ You will get the following image:<br/>
 Run ```generate_data/src/main_sph.cpp``` (project sphTest), follow the instructions to input cosmology path.<br/>
 Run ```generate_data/src/main_cosmicweb.cpp``` (project cosmicwebTest), follow the instructions to input cosmology path.<br/>
 You can find the generated files in ```build/generate_data/```.
-- Sample data
+- Sample data<br/>
 Sample SPH result files of different attributes at selected time steps can be found in ```data/sph_results```. Sample cosmic web files are in ```data/cosmic_web_results```. You can use them to try out the following visualization methods.
 
 ## Particle attributes
