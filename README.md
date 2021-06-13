@@ -16,7 +16,7 @@ Please build the code properly with cmake and vtk, eigen3, qt and opencv install
 - Visualize particle types with point gaussian <br/>
 Run ```particle_type/visual_type/show.cxx``` (project show_type), follow the instructions to input cosmology path and time.<br/>
 - Visual the number of particle type transition in a chord diagram <br/>
-Get into Colaboratory via the link https://colab.research.google.com/. Open ```particle_type/charts/chordDiagram.ipynb```.<br/>
+Get into [Colaboratory](https://colab.research.google.com/). Open ```particle_type/charts/chordDiagram.ipynb```.<br/>
 You will get the following image:<br/>
 <div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/chordDiagram.png" width="450" height="400"/></div>
 
@@ -33,7 +33,8 @@ Run ```generate_data/src/main_sph.cpp``` (project sphTest), follow the instructi
 Run ```generate_data/src/main_cosmicweb.cpp``` (project cosmicwebTest), follow the instructions to input cosmology path.<br/>
 You can find the generated files in ```build/generate_data/```.
 - Sample data<br/>
-Sample SPH result files of different attributes at selected time steps can be found in ```data/sph_results```. Sample cosmic web files are in ```data/cosmic_web_results```. You can use them to try out the following visualization methods.
+Sample SPH result files of different attributes at selected time steps can be found in [sph_results](https://drive.google.com/drive/folders/1KgbL8lGfb9D3dBPeup1ge6lJksZEuOoA?usp=sharing).<br/> 
+Sample cosmic web files are in [cosmic_web_results](). You can use them to try out the following visualization methods.
 
 ## Particle attributes
 
@@ -49,7 +50,7 @@ Run ```cosmic_web/show.cxx``` (project show_cosmicweb), follow the instructions 
 
 - Integrate all visualization in a GUI<br/>
 Run ```gui/main.cxx``` (project MainWindow), follow the instructions to input cosmology path, SPH and cosmic web result path (in one folder) and time.<br/>
-The gui works as the same as in the [demo.mov](https://drive.google.com/file/d/1pIoIlcz4T5n609MJ3BvA-8TqXHxdj9Y9/view?usp=sharing).
+The gui works as the same as in [demo.mov](https://drive.google.com/file/d/1pIoIlcz4T5n609MJ3BvA-8TqXHxdj9Y9/view?usp=sharing).
 
 ## Animation
 
