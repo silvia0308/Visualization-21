@@ -2,6 +2,7 @@
 #define VIS21_SRC_CORE_DATAFRAME_H
 
 #include <Eigen/Core>
+#include <vector>
 
 namespace vis21 {
 
