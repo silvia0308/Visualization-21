@@ -2,21 +2,14 @@
 Project for Visualization 2021 Spring @ ETH Zurich [[Report Link]()] <br/>
 <br/>
 This repo contains the source code to support temproal visualization taking cosmology simulation data as inputs.
-- Generate data
 - Particle type
+- Generate data
 - Particle attributes
 - Cosmic web
 - GUI
 - Animation
 
 Please build the code properly with cmake and vtk, eigen3, qt and opencv installed.
-
-## Generate Data
-
-- Generate txt files of SPH and cosmic web<br/>
-Run ```generate_data/src/main_sph.cpp``` (project sphTest), follow the instructions to input cosmology path.<br/>
-Run ```generate_data/src/main_cosmicweb.cpp``` (project cosmicwebTest), follow the instructions to input cosmology path.<br/>
-You can find the generated files in ```build/generate_data/```.
 
 ## Particle type
 
@@ -31,6 +24,14 @@ You will get the following image:<br/>
 Run ```particle_type/charts/dataDistribu.cpp``` (project dataDistribu), follow the instructions to input cosmology path and get ```distribute.txt```. Then run ```particle_type/charts/plotDist.cpp``` (project plotDist).<br/>
 You will get the following image:<br/>
 <div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/histogram.png" width="450" height="400"/></div>
+
+
+## Generate data
+
+- Generate txt files of SPH and cosmic web<br/>
+Run ```generate_data/src/main_sph.cpp``` (project sphTest), follow the instructions to input cosmology path.<br/>
+Run ```generate_data/src/main_cosmicweb.cpp``` (project cosmicwebTest), follow the instructions to input cosmology path.<br/>
+You can find the generated files in ```build/generate_data/```.
 
 ## Particle attributes
 
