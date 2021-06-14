@@ -22,8 +22,8 @@ Open the terminal, run the following commands in the directory ```Visualization-
 ```cp runDataDist.sh build/particle_type/charts/runDataTrans.sh```<br/> 
 ```cd build/particle_type/charts```<br/>
 ```./runDataTrans.sh /path/of/cosmology/folder```<br/>
-And you will get ```Tran.txt``` in ```build/particle_type/```.<br/>
-Get into [Colaboratory](https://colab.research.google.com/), upload ```particle_type/charts/chordDiagram.ipynb``` and ```Tran.txt```, run the code.<br/>
+And you will get ```Trans.txt``` in ```build/particle_type/```.<br/>
+Get into [Colaboratory](https://colab.research.google.com/), upload ```particle_type/charts/chordDiagram.ipynb``` and ```Trans.txt```, run the code.<br/>
 You will get the following image:<br/>
 <div align=center><img src="https://github.com/silvia0308/Visualization-21/blob/main/particle_type/charts/chordDiagram.png" width="250" height="225"/></div>
 
