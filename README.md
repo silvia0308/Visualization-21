@@ -25,7 +25,7 @@ Open the terminal, run the following commands in the directory ```Visualization-
 And you will get ```Tran.txt``` in ```build/particle_type/```.<br/>
 Get into [Colaboratory](https://colab.research.google.com/). Open ```particle_type/charts/chordDiagram.ipynb```, upload ```Tran.txt```, run the code.<br/>
 You will get the following image:<br/>
-<div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/chordDiagram.png" width="450" height="400"/></div>
+<div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/chordDiagram.png" width="250" height="225"/></div>
 
 - Visual the number of particle types over time in a histogram <br/>
 Open the terminal, run the following commands in ```Visualization-21```:<br/>
@@ -35,7 +35,7 @@ Open the terminal, run the following commands in ```Visualization-21```:<br/>
 And you will get ```distribute.txt``` in ```build/particle_type/```.<br/>
 Then run ```./particle_type/charts/plotDist```.<br/>
 You will get the following image:<br/>
-<div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/histogram.png" width="450" height="400"/></div>
+<div align=center><img src="https://github.com/B1ueber2y/Visualization-21/blob/Final/particle_type/charts/histogram.png" width="250" height="200"/></div>
 
 
 ## Generate data
