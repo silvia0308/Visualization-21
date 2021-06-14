@@ -10,7 +10,7 @@ This repo contains the source code to support temproal visualization taking cosm
 - Animation
 
 Assume the source code is run in Linux with vtk, eigen3, qt and opencv installed.
-Please run CMake to create project files in release mode and set corresponding library paths, compile code with ```make```.
+Please run CMake to set corresponding library paths and create project files in release mode, compile code with ```make```.
 
 ## Particle type
 
@@ -19,9 +19,9 @@ Run ```./particle_type/visual_type/show_type```, follow the instructions to inpu
 
 - Visual the number of particle type transition in a chord diagram <br/>
 Open the terminal, run the following commands in the directory ```Visualization-21```:<br/>
-```cp runDataDist.sh build/particle_type/charts/runDataTran.sh```<br/> 
+```cp runDataDist.sh build/particle_type/charts/runDataTrans.sh```<br/> 
 ```cd build/particle_type/charts```<br/>
-```./runDataTran.sh /path/of/cosmology/folder```<br/>
+```./runDataTrans.sh /path/of/cosmology/folder```<br/>
 And you will get ```Tran.txt``` in ```build/particle_type/```.<br/>
 Get into [Colaboratory](https://colab.research.google.com/). Open ```particle_type/charts/chordDiagram.ipynb```, upload ```Tran.txt```, run the code.<br/>
 You will get the following image:<br/>
