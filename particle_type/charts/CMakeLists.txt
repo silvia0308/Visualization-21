@@ -22,3 +22,33 @@ target_link_libraries(${PROJECT_NAME}
 vtk_module_autoinit(
   TARGETS ${PROJECT_NAME}
   MODULES ${VTK_LIBRARIES})
+
+PROJECT(chord)
+
+add_executable(${PROJECT_NAME} MACOSX_BUNDLE ${PROJECT_NAME}.cpp)
+target_link_libraries(${PROJECT_NAME} 
+  PRIVATE
+    ${VTK_LIBRARIES})
+vtk_module_autoinit(
+  TARGETS ${PROJECT_NAME}
+  MODULES ${VTK_LIBRARIES})
+  
+PROJECT(chord2)
+  
+add_executable(${PROJECT_NAME} MACOSX_BUNDLE ${PROJECT_NAME}.cpp)
+target_link_libraries(${PROJECT_NAME} 
+  PRIVATE
+    ${VTK_LIBRARIES})
+vtk_module_autoinit(
+  TARGETS ${PROJECT_NAME}
+  MODULES ${VTK_LIBRARIES})
+  
+PROJECT(chord3)
+  
+add_executable(${PROJECT_NAME} MACOSX_BUNDLE ${PROJECT_NAME}.cpp)
+target_link_libraries(${PROJECT_NAME} 
+  PRIVATE
+    ${VTK_LIBRARIES})
+vtk_module_autoinit(
+  TARGETS ${PROJECT_NAME}
+  MODULES ${VTK_LIBRARIES})

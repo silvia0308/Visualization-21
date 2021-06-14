@@ -59,18 +59,14 @@ void run(int j){
 
 int main(int argc, char** argv)
 {
-	std::cout << "Please input the path to cosmology folder: ";
-	std::cin >> root_path;
-  
+	//std::cout << "Please input the path to cosmology folder: ";
+	//std::cin >> root_path;
+  root_path = argv[2];
+
   std::ofstream file;
   file.open("../distribute.txt",std::ofstream::app);
-  file<<"Num-Star-FormingStar-WindStar-AGN\n";
-  for(int j=0;j<=624;j+=2){
-    run(j);
-  }
-  for(int i=0;i<vstar.size();i++){
-    file<<vid[i]<<' '<<vstar[i]<<' '<<vform[i]<<' '<<vwind[i]<<' '<<vAGN[i]<<'\n';
-  }
+  run( std::stoi(argv[1]) );
+  file<<vid[0]<<' '<<vstar[0]<<' '<<vform[0]<<' '<<vwind[0]<<' '<<vAGN[0]<<'\n';
   file.close();
 
   return 0;
